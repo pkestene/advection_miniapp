@@ -418,7 +418,7 @@ namespace DGAdvection
     AffineConstraints<double> dummy;
     dummy.close();
     data.reinit(mapping,
-                {{&dof_handler}},
+                std::vector<const DoFHandler<dim> *>{{&dof_handler}},
                 std::vector<const AffineConstraints<double> *>{{&dummy}},
                 std::vector<Quadrature<1>>{{quadrature, quadrature_mass}},
                 additional_data);
